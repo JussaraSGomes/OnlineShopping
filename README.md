@@ -11,6 +11,9 @@ Este é um repositório que contém a automação dos testes técnicos para a Ke
 ### Testes Funcionais
 Os testes funcionais estão localizados na raiz com o nome "teste_funcional_web_BDD"
 
+### Testes do Postman
+não sabia muito bem como enviar os testes de Postman, então criei uma pasta Postman na raiz e criei arquivos .txt com os CURl's de cada API, os dados inseridos são novos ou que foram usados para tetar, é só importar o CURL para o postman e rodar.
+
 ### Instalação
 Para configurar o projeto localmente, siga as instruções abaixo: 
 1. Clone o repositório usando o git bash:
