@@ -69,3 +69,33 @@ When usuário clica no botão "User"
 	And usuário clica no botão 
 Then site deve apresentar a mensagem de erro "Incorrect user name or password."	
 	And não realizar o login
+
+Feature: Adicionar um produto ao carrinho
+
+Background: 
+	Given usuário acessa o link https://advantageonlineshopping.com/
+		And realizar o Login no site com dados já cadastrados
+		
+Scenario: Incluir um produto no carrinho
+When usuário clica na categoria "TABLETS" na página home do site
+	And Site direciona o usuário para a página de tablets
+	And usuário clica na opção "HP ELITEPAD 1000 G2 TABLET"
+	And site direciona para a página do produto
+	And usuário seleciona a cor 
+	And informa a quantidade
+	And usuário clica no botão "ADD TO CART"
+Then Site apresenta um "tool-tip-cart" saindo do botão carrinho de compras com as informações do produto	
+	And usuário deve clicar no Carrinho de compras para confirmar o produto
+
+Background: 
+	Given usuário acessa o link https://advantageonlineshopping.com/
+		And já tenha realizado o login
+		And tenha adicionado um ou mais produtos no carrinho
+
+Scenario: Validar o carrinho de compras com produtos já selecionados
+When usuário clica no Carrinho de Compras
+	And Site apresenta a tela "Shopping Cart(X)" (onde X é quantidade de produtos no carrinho)
+Then Na tela deve apresentar uma lista dos produtos selecionados com as informações
+	|PRODUCT NAME | COLOR | QUANTITY | PRICE
+	And apresentar as opções "EDIT" e "Remove" abaixo do valor do produto
+	And apresentar o botão "CHECKOUT($xxxx)" (onde xxxx seria o valor do produto)
