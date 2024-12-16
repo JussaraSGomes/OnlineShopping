@@ -1,0 +1,71 @@
+Feature: Cadastro de novo usuário para login
+
+Background:
+	Given usuário acessa o link https://advantageonlineshopping.com/
+	And site é carregado corretamente
+
+Scenario: Validando fluxo de cadastro de um novo usuário.
+When usuário clica no botão "User"
+	And Site apresenta o Pop-up para login
+	And usuário clica no link "CREATE NEW ACCOUNT"
+Then Site deve direcionar o usuário para a páginam "Create Account"
+	And deve apresentar nos campos obrigatórios um asterico em vermelho para sinalizar quais campos são obrigatórios
+	|Campos Obrigatorios|
+	|Username			|
+	|Email				|
+	|Password			|
+	|Confirm password	|
+	And deve apresentar um checkbox para aceitar as condições
+	And deve apresentar o botão "Register"
+	
+Scenario: Realizar o cadastro de um novo usuário
+When usuário clica no botão "User"
+	And usuário clica no link "CREATE NEW ACCOUNT"
+	And preenche os campos obrigatórios com dados válidos
+	And ticar o checkbox das condições de uso
+Then usuário deve clicar no botão "REGISTER"
+	And Site deve confirmar o cadastro 
+	And realizar um login automático do usuário 
+	And apresentar o nome cadastrado ao lado do botão User
+	
+Scenario: Cadastro de um novo usuário com campo obrigatório em branco
+When usuário clica no botão "User"
+	And usuário clica no link "CREATE NEW ACCOUNT"
+	And preenche alguns campos obrigatórios mas deixa um campo em branco
+	And ticar o checkbox das condições de uso
+Then Site não deve habilitar o campo "REGISTER"
+
+Scenario: Cadastro de um novo usuário os campos password incorretos
+When usuário clica no botão "User"
+	And usuário clica no link "CREATE NEW ACCOUNT"
+	And preenche os campos obrigatórios com dados válidos
+	And preenche o campo "Password" diferente do campo "Confirm Password"
+	And ticar o checkbox das condições de uso
+Then Site não deve habilitar o campo "REGISTER"
+
+Scenario: Validar Pop-up de Login 
+When usuário clica no botão "User"
+	And Site apresenta o pop-up para realizar o Login
+Then Pop-up deve ter os campos "Username" e "Password" habilitados para edição
+	And deve apresentar o botão "SIGN IN WITH FACEBBOK"
+	And apresentar o checkbox "REMEMBER ME"
+	And apresentar o botão "SIGN IN" desabilitado
+	And os links "Forgot your password?" e "CREATE NEW ACCOUNT"
+	
+Scenario: Realizar o Login com sucesso
+When usuário clica no botão "User"
+	And preenche os campos "Username" e "Password" com dados já cadastrados
+	And ticar o checkbox "REMEMBER ME"
+	And botão "SIGN IN" deve ser habilitado
+Then usuário deve clicar no botão "SIGN IN"
+	And site deve realizar o login com sucesso		
+	And apresentar o nome cadastrado ao lado do botão User
+	
+	Scenario: Realizar um Login com dados não cadastrados
+When usuário clica no botão "User"
+	And preencher o campo "Username" com dado não cadastrado
+	And preencher o campo "Password" com dado já cadastrados
+	And botão "SIGN IN" deve ser habilitado
+	And usuário clica no botão 
+Then site deve apresentar a mensagem de erro "Incorrect user name or password."	
+	And não realizar o login
