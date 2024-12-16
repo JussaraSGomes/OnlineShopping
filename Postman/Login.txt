@@ -1,0 +1,8 @@
+curl --location 'www.advantageonlineshopping.com/accountservice/accountrest/api/v1/login' \
+--header 'Content-Type: application/json' \
+--header 'Accept: */*' \
+--data-raw '{
+  "email": "teste_teste1@gmail.com",
+  "loginPassword": "Teste1234",
+  "loginUser": "Teste12"
+}'

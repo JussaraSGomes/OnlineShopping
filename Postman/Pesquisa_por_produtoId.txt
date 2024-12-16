@@ -1,0 +1,2 @@
+curl --location 'www.advantageonlineshopping.com/catalog/api/v1/products/14' \
+--header 'Accept: */*'
