@@ -7,6 +7,8 @@ Este é um repositório que contém a automação dos testes técnicos para a Ke
 - NodeJs.
 - Yarn
 - Cypress-cucumber-preprocessor
+### Testes Funcionais
+Os testes funcionais estão localizados na raiz com o nome "teste_funcional_web_BDD"
 
 ### Instalação
 Para configurar o projeto localmente, siga as instruções abaixo: 
