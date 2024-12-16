@@ -1,0 +1,2 @@
+curl --location 'www.advantageonlineshopping.com/catalog/api/v1/products/search?name=HP%20USB%203%20Button%20Optical%20Mouse&quantityPerEachCategory=-1' \
+--header 'Accept: */*'

@@ -1,0 +1,19 @@
+curl --location 'www.advantageonlineshopping.com/accountservice/accountrest/api/v1/register' \
+--header 'Content-Type: application/json' \
+--header 'Accept: */*' \
+--data-raw '{
+  "accountType": "USER",
+  "address": "Avenida Paulista",
+  "allowOffersPromotion": "true",
+  "aobUser": "true",
+  "cityName": "São Paulo",
+  "country": "BRAZIL_BR",
+  "email": "teste_teste12@gmail.com",
+  "firstName": "Teste Jussara",
+  "lastName": "Tecnico",
+  "loginName": "Teste12",
+  "password": "Teste1234",
+  "phoneNumber": "123456789",
+  "stateProvince": "São Paulo",
+  "zipcode": "03555000"
+}'
