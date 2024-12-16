@@ -21,5 +21,3 @@ Para configurar o projeto localmente, siga as instruções abaixo:
 	yarn install
 4. Para rodar os testes, execute o comando, abrirá a interface do Cypress, onde você pode selecionar e executar os testes.
 	yarn cypress open
-	
-
