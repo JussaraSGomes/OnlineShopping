@@ -12,7 +12,7 @@ Este é um repositório que contém a automação dos testes técnicos para a Ke
 Os testes funcionais estão localizados na raiz com o nome "teste_funcional_web_BDD"
 
 ### Testes do Postman
-não sabia muito bem como enviar os testes de Postman, então criei uma pasta Postman na raiz e criei arquivos .txt com os CURl's de cada API, os dados inseridos são novos ou que foram usados para tetar, é só importar o CURL para o postman e rodar.
+Não sabia muito bem como enviar os testes de Postman, então criei uma pasta Postman na raiz e criei arquivos .txt com os CURl's de cada API, os dados inseridos são novos ou que foram usados para testar, é só importar o CURL para o postman e rodar.
 
 ### Instalação
 Para configurar o projeto localmente, siga as instruções abaixo: 
@@ -24,3 +24,6 @@ Para configurar o projeto localmente, siga as instruções abaixo:
 	yarn install
 4. Para rodar os testes, execute o comando, abrirá a interface do Cypress, onde você pode selecionar e executar os testes.
 	yarn cypress open
+
+### Automação de API
+Queria deixar uma observação, para a API de update de imagem, tanto pelo postman quando pelo cypress, a API retornou 500. A automação montei bem parecido com a automação que fiz na outra empresa. Mas ainda fiquei com dúvida em um ponto.
