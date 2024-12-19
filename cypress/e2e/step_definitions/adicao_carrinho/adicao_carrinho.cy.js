@@ -1,39 +1,46 @@
+import Login from '../../../support/pagesobjects/login.js'
+import Menu from '../../../support/pagesobjects/menu.js'
+import Produto from '../../../support/pagesobjects/products.js'
+import Cart from '../../../support/pagesobjects/cart.js'
+
 import { Given, When, Then, And, Before } from 'cypress-cucumber-preprocessor/steps'
 beforeEach(()=> {
     cy.viewport(1440, 900)
+
+    
 })
 
 Given ('usuário tenha acessado o site e realizado o login', ()=> {
-    cy.acessar_site()
-    cy.login('Teste1', 'Teste1234')
+    Login.loginCompleto()
+    
 })
 
-And ('realiza a busca de um produto', ()=> {
-    cy.pesquisa_produto("Mouse")
+And ('realiza a busca de um produto Tablet', ()=> {
+    Produto.pesqCompleta()
 })
 
-When ('usuário clica sobre a imagem do produto', ()=> {
-    cy.get('[data-ng-show="([] | productsFilterForCategoriesProduct:searchResult:minPriceToFilter:maxPriceToFilter:productsInclude).length != 0"] > ul > :nth-child(1)')
-    .click()
+When ('usuário clica no produto escolhido', ()=> {
+    Produto.clickProduto()
 })
 
-And ('Site apresenta uma pagina detalhada sobre o produto', ()=> {
-    cy.get('.select').should('have.text', "HP Z3600 WIRELESS MOUSE")
+And ('apresenta a pagina detalhada sobre o produto', ()=> {
+    Produto.detalhadoProduct()
 })
 
-And ('usuário seleciona a cor', ()=> {
-    cy.get('.BLUE').click()
+And ('seleciona a cor do produto', ()=> {
+    Produto.selecaoCor()
 })
 
-And ('usuário informa a quantidade que será comprada', ()=>{
-    cy.get(':nth-child(2) > .ng-pristine').type("2")
+And ('informa a quantidade que será comprada', ()=>{
+    Produto.incluirQtd()
 })
 
 And ('clica no botão Add To Cart', ()=> {
-    cy.get('button.roboto-medium.ng-scope').click()
+    Produto.clicarBotao()
 })
 
 Then ('site deve apresentar um pop-up informando que o produto está no carrinho', ()=> {
-    cy.get('[colspan="2"] > .roboto-medium').should('be.visible')
+    Produto.prodAdicionado()
+
 })
 

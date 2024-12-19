@@ -1,35 +1,38 @@
+import Login from '../../../support/pagesobjects/login.js'
+import Menu from '../../../support/pagesobjects/menu.js'
+import Produto from '../../../support/pagesobjects/products.js'
+import Cart from '../../../support/pagesobjects/cart.js'
+
 import { Given, When, Then, And, Before } from 'cypress-cucumber-preprocessor/steps'
 beforeEach(()=> {
     cy.viewport(1440, 900)
 })
 
 Given ('usuário tenha acessado o site e realizado o login', ()=> {
-    cy.acessar_site()
-    cy.login('Teste1', 'Teste1234')
+    Login.loginCompleto()
 })
 
 When ('usuário clica no botão de Busca', ()=> {
-    cy.get('#searchSection').click()
+    Menu.acessaPesquisa()
 })
 
 And ('Site apresenta um campo de pesquisa', ()=> {
-    cy.get('#autoComplete').should('be.visible')
+    Menu.acessaPesquisa()
 })
 
 And ('usuário informa o produto a ser pesquisado', ()=> {
-    cy.get('#autoComplete').type('Mouse')
+    Produto.pesquisaProduto()
 })
 
 And ('site apresenta um pop-up com o resultado da pesquisa', ()=> {
-    cy.get('h3.roboto-medium.ng-binding')
+    Produto.retornoPesquisa()
 })
 
 And ('usuário clica no link View All', ()=> {
-    cy.get('.viewAll').click()
+    Produto.visualizarTudo()
 })
 
 Then ('Site deve apresentar uma página completa com o resultado da pesquisa', ()=> {
-    cy.get('div[data-ng-click="closeSearchForce()"]').click()
-    cy.get('#searchResultLabel').should('be.visible')
+    Produto.fecharPopUp()
 })
 
